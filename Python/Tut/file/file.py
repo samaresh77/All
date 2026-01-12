@@ -1,34 +1,48 @@
 # write file
-# st = "Hello, World!\nThis is a sample file.\n"
-# file = open("./sample.txt", "w")
-# file.write(st)
-# file.close()
-
-import os
-print(os.getcwd())
+with open("example.txt", "w") as file:
+    file.write("Hello, World!\n")
+    file.write("This is a sample file.\n")
+    print("File written successfully.")
 
 # read file
-# file = open("ex2.txt", "r")
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+# # without using 'with' statement
+# file = open("example.txt", "r")
 # content = file.read()
 # print(content)
 # file.close()
 
-with open("ex2.txt", "r") as file:
+# append to file
+with open("example.txt", "a") as file:
+    file.write("Appending a new line.\n")
+
+# read file again to see the changes
+with open("example.txt", "r") as file:
     content = file.read()
     print(content)
 
-# append file
-file = open("ex2.txt", "a")
-file.write("\nThis is an appended line.")
-file.close()
+# read file line by line
+with open("example.txt", "r") as file:
+    for line in file:
+        print(line.strip())
 
-# read file after appending
-file = open("ex2.txt", "r")
-content = file.read()
-print(content)
-file.close()
+# using with statement to ensure file is closed properly
+with open("example.txt", "r") as file:
+    content = file.readlines()
+    print(content)
 
-# # using 'with' statement
-# with open("ex2.txt", "r") as file:
-#     content = file.read()
-#     print(content)
+# check if file exists
+import os
+if os.path.exists("example.txt"):
+    print("File exists.")
+else:
+    print("File does not exist.")
+
+# delete file
+os.remove("example2.txt")
+print("File deleted.")
+
+
