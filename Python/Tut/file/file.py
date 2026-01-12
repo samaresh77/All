@@ -1,5 +1,5 @@
 # write file
-with open("example.txt", "w") as file:
+with open("./example2.txt", "w") as file:
     file.write("Hello, World!\n")
     file.write("This is a sample file.\n")
     print("File written successfully.")
@@ -41,8 +41,8 @@ if os.path.exists("example.txt"):
 else:
     print("File does not exist.")
 
-# delete file
-os.remove("example2.txt")
-print("File deleted.")
+# # delete file
+# os.remove("ex2.txt")
+# print("File deleted.")
 
 
