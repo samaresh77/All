@@ -2,6 +2,21 @@
 # It is called a constructor and is automatically invoked when a new instance of the class is created.
 # The primary purpose of the __init__ method is to initialize the attributes of the class.
 
+class Employee:
+    salary = 50000  # class variable
+    language = "Python"  # class variable
+
+    def __init__(self): # default constructor
+        print("Employee object is created.")
+
+    def getInfo(self):
+        print(f"Salary: {self.salary} and Language: {self.language}")
+
+# Creating an instance of the Employee class
+emp1 = Employee()
+emp1.getInfo()
+
+
 class Car:
     def __init__(self, make, model, year):
         self.make = make    # instance variable
