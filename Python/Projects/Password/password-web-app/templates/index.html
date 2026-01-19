@@ -5,18 +5,50 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="box">
-        <h2>🔐 Password Generator</h2>
 
-        <form method="POST">
-            <input type="number" name="length" placeholder="Password length" required>
-            <button type="submit">Generate</button>
-        </form>
+<div class="box">
+    <h2>🔐 Password Generator</h2>
 
-        {% if password %}
-            <p><b>Password:</b> {{ password }}</p>
-            <p><b>Strength:</b> {{ strength }}</p>
-        {% endif %}
-    </div>
+    <form method="POST">
+        <input 
+            type="number" 
+            name="length" 
+            placeholder="Enter password length"
+            required
+            min="4"
+        >
+        <button type="submit">Generate Password</button>
+    </form>
+
+    {% if password %}
+        <p><b>Password:</b></p>
+
+        <input
+            type="text"
+            id="passwordField"
+            value="{{ password }}"
+            readonly
+        >
+
+        <p><b>Strength:</b> {{ strength }}</p>
+
+        <button onclick="copyPassword()">📋 Copy Password</button>
+
+        <p id="copyMsg"></p>
+    {% endif %}
+</div>
+
+<script>
+function copyPassword() {
+    const passwordInput = document.getElementById("passwordField");
+    passwordInput.select();
+    passwordInput.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(passwordInput.value);
+
+    document.getElementById("copyMsg").innerText = "✅ Password copied!";
+}
+</script>
+
 </body>
 </html>

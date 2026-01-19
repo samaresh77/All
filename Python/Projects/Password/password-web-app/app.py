@@ -4,16 +4,16 @@ import string
 
 app = Flask(__name__)
 
-# -----------------------
+# -------------------------
 # Password Generator
-# -----------------------
+# -------------------------
 def generate_password(length):
     chars = string.ascii_letters + string.digits + string.punctuation
     return ''.join(random.choice(chars) for _ in range(length))
 
-# -----------------------
-# Strength Checker
-# -----------------------
+# -------------------------
+# Password Strength Checker
+# -------------------------
 def check_strength(password):
     score = 0
 
@@ -35,9 +35,9 @@ def check_strength(password):
     else:
         return "Strong ✅"
 
-# -----------------------
-# Routes
-# -----------------------
+# -------------------------
+# Route
+# -------------------------
 @app.route("/", methods=["GET", "POST"])
 def index():
     password = ""
