@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Royale</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-snake"></i> SNAKE ROYALE</h1>
+            <div class="user-info" id="userInfo">
+                <span id="usernameDisplay">Guest</span>
+                <button id="loginBtn" class="btn btn-login">Login</button>
+                <button id="logoutBtn" class="btn btn-logout" style="display: none;">Logout</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="game-section">
+                <div class="game-header">
+                    <div class="score-board">
+                        <div class="score-item">
+                            <span class="score-label">SCORE</span>
+                            <span id="score" class="score-value">0</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">LEVEL</span>
+                            <span id="level" class="score-value">1</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">LENGTH</span>
+                            <span id="length" class="score-value">3</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">HIGH SCORE</span>
+                            <span id="highScore" class="score-value">0</span>
+                        </div>
+                    </div>
+                    <div class="game-controls">
+                        <button id="startBtn" class="btn btn-start">
+                            <i class="fas fa-play"></i> START GAME
+                        </button>
+                        <button id="pauseBtn" class="btn btn-pause" disabled>
+                            <i class="fas fa-pause"></i> PAUSE
+                        </button>
+                        <button id="resetBtn" class="btn btn-reset">
+                            <i class="fas fa-redo"></i> RESET
+                        </button>
+                    </div>
+                </div>
+
+                <div class="game-container">
+                    <canvas id="gameCanvas" width="600" height="600"></canvas>
+                    <div class="game-overlay" id="gameOverlay">
+                        <div class="overlay-content">
+                            <h2 id="overlayTitle">SNAKE ROYALE</h2>
+                            <p id="overlayText">Use arrow keys to move. Eat the food to grow and score points!</p>
+                            <button id="overlayAction" class="btn btn-start">START GAME</button>
+                            <div class="controls-info">
+                                <h3><i class="fas fa-gamepad"></i> CONTROLS</h3>
+                                <div class="controls-grid">
+                                    <div class="control-item">
+                                        <i class="fas fa-arrow-up"></i>
+                                        <span>UP</span>
+                                    </div>
+                                    <div class="control-item">
+                                        <i class="fas fa-arrow-left"></i>
+                                        <span>LEFT</span>
+                                    </div>
+                                    <div class="control-item">
+                                        <i class="fas fa-arrow-down"></i>
+                                        <span>DOWN</span>
+                                    </div>
+                                    <div class="control-item">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>RIGHT</span>
+                                    </div>
+                                    <div class="control-item">
+                                        <i class="fas fa-space-shuttle"></i>
+                                        <span>SPACE - PAUSE</span>
+                                    </div>
+                                    <div class="control-item">
+                                        <i class="fas fa-undo"></i>
+                                        <span>R - RESTART</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="difficulty-selector">
+                    <h3>DIFFICULTY</h3>
+                    <div class="difficulty-buttons">
+                        <button class="difficulty-btn active" data-speed="150">EASY</button>
+                        <button class="difficulty-btn" data-speed="100">MEDIUM</button>
+                        <button class="difficulty-btn" data-speed="70">HARD</button>
+                        <button class="difficulty-btn" data-speed="40">INSANE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="auth-forms" id="authForms">
+                    <div class="form-container" id="loginForm">
+                        <h3><i class="fas fa-sign-in-alt"></i> LOGIN</h3>
+                        <div class="form-group">
+                            <label for="loginUsername">Username</label>
+                            <input type="text" id="loginUsername" placeholder="Enter username">
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" placeholder="Enter password">
+                        </div>
+                        <button id="submitLogin" class="btn btn-primary">Login</button>
+                        <p class="form-switch">Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+                    </div>
+
+                    <div class="form-container" id="registerForm" style="display: none;">
+                        <h3><i class="fas fa-user-plus"></i> REGISTER</h3>
+                        <div class="form-group">
+                            <label for="registerUsername">Username</label>
+                            <input type="text" id="registerUsername" placeholder="Choose username">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Email</label>
+                            <input type="email" id="registerEmail" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" id="registerPassword" placeholder="Choose password">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerConfirmPassword">Confirm Password</label>
+                            <input type="password" id="registerConfirmPassword" placeholder="Confirm password">
+                        </div>
+                        <button id="submitRegister" class="btn btn-primary">Register</button>
+                        <p class="form-switch">Already have an account? <a href="#" id="showLogin">Login here</a></p>
+                    </div>
+                </div>
+
+                <div class="user-stats" id="userStats" style="display: none;">
+                    <h3><i class="fas fa-chart-line"></i> YOUR STATS</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Games Played</span>
+                            <span id="statGames" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Total Score</span>
+                            <span id="statTotalScore" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Avg. Score</span>
+                            <span id="statAvgScore" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Best Score</span>
+                            <span id="statBestScore" class="stat-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leaderboard">
+                    <h3><i class="fas fa-trophy"></i> LEADERBOARD</h3>
+                    <div class="leaderboard-controls">
+                        <button id="refreshLeaderboard" class="btn btn-small">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                        <select id="leaderboardFilter">
+                            <option value="global">Global Top 20</option>
+                            <option value="personal">My Scores</option>
+                        </select>
+                    </div>
+                    <div class="leaderboard-list" id="leaderboardList">
+                        <!-- Leaderboard entries will be loaded here -->
+                        <div class="leaderboard-loading">Loading leaderboard...</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Snake Royale &copy; 2023 | Built with FastAPI & MongoDB | Use arrow keys to play</p>
+        </footer>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div class="modal" id="gameOverModal">
+        <div class="modal-content">
+            <h2><i class="fas fa-skull-crossbones"></i> GAME OVER</h2>
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <span>Final Score</span>
+                    <span id="finalScore">0</span>
+                </div>
+                <div class="modal-stat">
+                    <span>Snake Length</span>
+                    <span id="finalLength">0</span>
+                </div>
+                <div class="modal-stat">
+                    <span>Level Reached</span>
+                    <span id="finalLevel">0</span>
+                </div>
+            </div>
+            <p id="gameOverMessage">Better luck next time!</p>
+            <div class="modal-buttons">
+                <button id="playAgainBtn" class="btn btn-start">PLAY AGAIN</button>
+                <button id="closeModalBtn" class="btn btn-reset">CLOSE</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="leaderboard.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
