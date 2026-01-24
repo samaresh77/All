@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App 🌦️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            width: 320px;
+            margin: auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .weather-info {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>🌦️ Weather App</h2>
+
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter city name" required>
+            <br>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if error %}
+            <div class="error">❌ {{ error }}</div>
+        {% endif %}
+
+        {% if weather %}
+            <div class="weather-info">
+                <h3>📍 {{ weather.city }}, {{ weather.country }}</h3>
+                <p>🌡 Temperature: {{ weather.temperature }} °C</p>
+                <p>🤒 Feels Like: {{ weather.feels_like }} °C</p>
+                <p>☁ Condition: {{ weather.condition }}</p>
+                <p>💧 Humidity: {{ weather.humidity }}%</p>
+                <p>🌬 Wind Speed: {{ weather.wind }} m/s</p>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
