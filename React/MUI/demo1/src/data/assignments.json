@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Math Homework",
+    "subject": "Mathematics",
+    "dueDate": "2026-01-30",
+    "status": "Pending"
+  },
+  {
+    "id": 2,
+    "title": "Science Project",
+    "subject": "Science",
+    "dueDate": "2026-02-05",
+    "status": "Submitted"
+  }
+]

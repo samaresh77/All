@@ -3,6 +3,7 @@ import { CssBaseline, Container } from '@mui/material';
 import Navbar from './layouts/Navbar';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import AssignmentsPage from './components/AssignmentsPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path='/assignments' element={<AssignmentsPage />} />
         </Routes>
       </Container>
     </Router>
