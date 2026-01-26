@@ -31,7 +31,7 @@ const AssignmentsPage = () => {
 
     const fetchAssignments = async () => {
         try {
-            const response = await fetch("http://localhost:5000/student/assignments");
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/student/assignments`);
             const data = await response.json();
             setAssignments(data);
         } catch (error) {
