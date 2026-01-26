@@ -1,0 +1,21 @@
+Step 1: Create a React Project using Vite --> npm create vite@latest
+cd your-project-name
+npm install
+npm run dev
+
+Step 2: Install Material UI (MUI) Dependencies 
+--> npm install @mui/material @emotion/react @emotion/styled
+
+Step 4: Add the Responsive Meta Tag (Recommended) 
+<!-- public/index.html (or index.html in the project root) -->
+<head>
+  <!-- Other head elements... -->
+  <meta name="viewport" content="initial-scale=1, width=device-width" /> //add this
+  <!-- ... -->
+</head>
+
+Step 5: Theming and Customization (Optional)
+-->npm install @mui/icons-material
+
+step-6: 
+-->npm install react-router-dom
