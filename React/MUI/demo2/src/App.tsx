@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import Home from './pages/Home';
 import Navbar from './layouts/Navbar';
+import MyPerformance from './pages/MyPerformance';
 
 // Create custom theme to match the clean UI
 const theme = createTheme({
@@ -115,7 +116,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<div style={{ padding: '2rem' }}>Projects Page (Coming Soon)</div>} />
                 <Route path="/issues" element={<div style={{ padding: '2rem' }}>Issues Page (Coming Soon)</div>} />
-                <Route path="/performance" element={<div style={{ padding: '2rem' }}>Performance Page (Coming Soon)</div>} />
+                <Route path="/performance" element={<MyPerformance />} />
               </Routes>
             </Container>
           </Box>
