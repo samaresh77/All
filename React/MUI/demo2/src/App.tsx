@@ -6,7 +6,7 @@ import {
   ThemeProvider, 
   Box 
 } from '@mui/material';
-import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
 import Navbar from './layouts/Navbar';
 import MyPerformance from './pages/MyPerformance';
 
@@ -113,7 +113,7 @@ function App() {
           >
             <Container maxWidth="xl">
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route path="/projects" element={<div style={{ padding: '2rem' }}>Projects Page (Coming Soon)</div>} />
                 <Route path="/issues" element={<div style={{ padding: '2rem' }}>Issues Page (Coming Soon)</div>} />
                 <Route path="/performance" element={<MyPerformance />} />

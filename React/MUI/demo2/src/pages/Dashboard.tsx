@@ -86,7 +86,7 @@ const StatCard = ({ title, value, subValue, trend, trendValue, icon: Icon, color
   </Card>
 );
 
-const Home = () => {
+const Dashboard = () => {
   const stats = [
     { 
       title: 'Open Issues', 
@@ -249,4 +249,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;
