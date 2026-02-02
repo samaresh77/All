@@ -1,0 +1,127 @@
+🗓️ WEEK 1 — Python Foundations Through Mini Projects
+
+🟢 DAY 1 — Smart Calculator
+
+Build a calculator that:
+
+✔ Takes two numbers from user
+✔ Asks operation (+, -, *, /)
+✔ Prints result
+✔ Handles division by zero
+
+Concepts you learn
+
+input()
+
+if/elif
+
+Type conversion (int, float)
+
+Basic error handling
+
+🟢 DAY 2 — Even or Odd Game
+
+User enters a number → program tells if it's even or odd.
+
+Bonus:
+If number is divisible by both 3 and 5 → print "FizzBuzz"
+
+Concepts
+
+Modulus %
+
+Conditions
+
+Logic building
+
+🟢 DAY 3 — Number Guessing Game
+
+Computer chooses a random number (1–50).
+User keeps guessing until correct.
+
+After each guess:
+
+Too high
+
+Too low
+
+Correct 🎉
+
+Concepts
+
+random module
+
+while loop
+
+Game logic
+
+🟢 DAY 4 — To-Do List (Text Version)
+
+User can:
+
+Add task
+
+View tasks
+
+Remove task
+
+Exit
+
+Store tasks in a list.
+
+Concepts
+
+Lists
+
+Loops
+
+Menu systems
+
+🟢 DAY 5 — Password Strength Checker
+
+User enters a password.
+Check if it has:
+✔ At least 8 characters
+✔ At least 1 number
+✔ At least 1 uppercase letter
+
+Print strength: Weak / Medium / Strong
+
+Concepts
+
+Strings
+
+Loops
+
+Conditions
+
+🟢 DAY 6 — Word Counter
+
+User types a sentence → program shows:
+
+Number of words
+
+Number of characters
+
+Most common letter
+
+Concepts
+
+String methods
+
+Dictionaries
+
+Loops
+
+🟢 DAY 7 — Rock Paper Scissors (vs Computer)
+
+Classic game 🎮
+User vs computer random choice.
+
+Concepts
+
+Lists
+
+Random
+
+Nested conditions
