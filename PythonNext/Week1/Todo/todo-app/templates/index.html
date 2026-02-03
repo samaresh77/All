@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do App</title>
+</head>
+<body>
+    <h2>My Tasks</h2>
+
+    <form method="post">
+        <input name="task" required>
+        <button>Add</button>
+    </form>
+
+    <ul>
+        {% for t in tasks %}
+        <li>
+            {{ t[1] }}
+            <a href="/delete/{{ t[0] }}">❌</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
