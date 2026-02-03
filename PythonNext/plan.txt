@@ -36,7 +36,7 @@ Logic building
 
 🟢 DAY 3 — Number Guessing Game
 
-Computer chooses a random number (1–50).
+Computer chooses a random number (1–100).
 User keeps guessing until correct.
 
 After each guess:
