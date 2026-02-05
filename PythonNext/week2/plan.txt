@@ -1,0 +1,151 @@
+🚀 WEEK 2 — Python Becomes Practical
+
+This week you move from logic practice → real-world programming
+Files, data, automation, APIs.
+
+🟢 DAY 8 — File-Based To-Do App 📁
+
+Upgrade your previous To-Do list.
+
+🎯 Features
+
+Load tasks from tasks.txt at start
+
+Save tasks when added
+
+Update file when task removed
+
+🧠 Skills
+
+open()
+
+"r", "w", "a" modes
+
+.readlines() / .write()
+
+🟢 DAY 9 — Expense Tracker 💰
+
+Track daily expenses.
+
+🎯 Features
+
+Add expense (amount + category)
+
+View all expenses
+
+Show total spent
+
+Store in file expenses.txt
+
+Example file line:
+
+Food,250
+Travel,100
+
+🧠 Skills
+
+Working with comma-separated values
+
+Type conversion
+
+Data summaries
+
+🟢 DAY 10 — Contact Book 📒
+
+Store and search contacts.
+
+🎯 Features
+
+Add name + phone number
+
+Search contact by name
+
+View all contacts
+
+Save in file
+
+🧠 Skills
+
+Dictionaries
+
+Searching
+
+File persistence
+
+🟢 DAY 11 — Password Generator 🔐
+
+Generate strong random passwords.
+
+🎯 Features
+
+User chooses length
+
+Must include letters + numbers + symbols
+
+Print generated password
+
+🧠 Skills
+
+random
+
+string module
+
+Combining character sets
+
+🟢 DAY 12 — System Info Script 🖥️
+
+Your first automation script.
+
+🎯 Show:
+
+Current date & time
+
+OS name
+
+Python version
+
+🧠 Skills
+
+datetime
+
+platform
+
+Real system interaction
+
+🟢 DAY 13 — API Data Fetcher 🌍
+
+Your first internet data project.
+
+🎯 Use a free API like:
+
+Joke API
+
+Weather API
+
+Program fetches and prints data.
+
+🧠 Skills
+
+requests library
+
+JSON data handling
+
+🟢 DAY 14 — Mini Data Analyzer 📊
+
+Analyze a text file.
+
+🎯 Program should:
+
+Count lines
+
+Count words
+
+Find most common word
+
+🧠 Skills
+
+File reading
+
+Dictionaries
+
+Data processing
