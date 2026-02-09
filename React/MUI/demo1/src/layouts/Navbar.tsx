@@ -1,32 +1,63 @@
 import { Box, Button } from "@mui/material"
-import { Link, useLocation } from "react-router-dom"
 
 
 const Navbar = () => {
-    const location = useLocation();
-    const hide = (location.pathname === '/');
 
   return (
-    <Box 
+    <Box
       sx={{
+        bgcolor: "#ccc",
+        height: "3.6em",
         display: "flex",
-        justifyContent: "space-between"
+        flex: 1
       }}
     >
-        {hide ? (<Button
-            variant="contained"
-            component={Link}
-            to="/profile"
+      <Box
+        sx={{
+          flex: 0.2,
+          alignItems: "center",
+          bgcolor: "red"
+        }}
+      >
+        Logo
+      </Box>
+      <Box
+        sx={{
+          flex: 0.6,
+          alignItems: "center",
+          bgcolor: "green"
+        }}
+      >
+        Projects
+      </Box>
+      <Box
+        sx={{
+          flex: 0.3,
+          alignItems: "center",
+          display: "flex",
+          height: "3.6em",
+          // bgcolor: "blue"
+        }}
+      >
+        <Box
+          sx={{
+            flex: 1,
+            // alignItems: "center",
+            bgcolor: "#2d9cc4"
+          }}
         >
-            Go to Profile
-        </Button>) :
-        (<Button
-            variant="contained"
-            component={Link}
-            to="/"
+          Notification
+        </Box>
+        <Box
+          sx={{
+            flex: 1,
+            // alignItems: "center",
+            bgcolor: "#1c26ab"
+          }}
         >
-            Go Back to Home
-        </Button>)}
+          Profile
+        </Box>
+      </Box>
     </Box>
   )
 }
