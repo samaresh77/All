@@ -4,3 +4,6 @@
 /python-backend/venv
 /python-backend/__pycache__
 /python-backend/.env
+/frontend/node_modules
+/frontend/package-lock.json
+/frontend/.env
