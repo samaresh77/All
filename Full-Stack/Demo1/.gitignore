@@ -1,0 +1,6 @@
+/node-backend/node_modules
+/node-backend/package-lock.json
+/node-backend/.env
+/python-backend/venv
+/python-backend/__pycache__
+/python-backend/.env
