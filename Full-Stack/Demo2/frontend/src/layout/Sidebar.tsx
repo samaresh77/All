@@ -1,31 +1,67 @@
-import { Drawer, List, ListItemButton, ListItemText } from "@mui/material";
-import { Link } from "react-router-dom";
+import {
+  Drawer,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Box,
+  Typography,
+  Divider,
+} from "@mui/material";
+import {
+  Home,
+  Build,
+  Work,
+  Person,
+  ContactMail,
+} from "@mui/icons-material";
+import { NavLink } from "react-router-dom";
 
 const drawerWidth = 240;
 
+const navItems = [
+  { text: "Home", path: "/", icon: <Home /> },
+  { text: "Skills", path: "/skills", icon: <Build /> },
+  { text: "Experience", path: "/experience", icon: <Work /> },
+  { text: "About", path: "/about", icon: <Person /> },
+  { text: "Contact", path: "/contact", icon: <ContactMail /> },
+];
+
 const Sidebar = ({ mobileOpen, handleDrawerToggle }: any) => {
   const drawerContent = (
-    <List>
-      <ListItemButton component={Link} to="/">
-        <ListItemText primary="Home" />
-      </ListItemButton>
+    <Box>
+      {/* Profile Section */}
+      <Box sx={{ p: 2 }}>
+        <Typography variant="h6">Samaresh</Typography>
+        <Typography variant="body2" color="text.secondary">
+          Full Stack Developer
+        </Typography>
+      </Box>
 
-      <ListItemButton component={Link} to="/skills">
-        <ListItemText primary="Skills" />
-      </ListItemButton>
+      <Divider />
 
-      <ListItemButton component={Link} to="/experience">
-        <ListItemText primary="Experience" />
-      </ListItemButton>
-
-      <ListItemButton component={Link} to="/about">
-        <ListItemText primary="About" />
-      </ListItemButton>
-
-      <ListItemButton component={Link} to="/contact">
-        <ListItemText primary="Contact" />
-      </ListItemButton>
-    </List>
+      <List>
+        {navItems.map((item) => (
+          <ListItemButton
+            key={item.text}
+            component={NavLink}
+            to={item.path}
+            sx={{
+              "&.active": {
+                backgroundColor: "primary.main",
+                color: "#fff",
+                "& .MuiListItemIcon-root": {
+                  color: "#fff",
+                },
+              },
+            }}
+          >
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText primary={item.text} />
+          </ListItemButton>
+        ))}
+      </List>
+    </Box>
   );
 
   return (
