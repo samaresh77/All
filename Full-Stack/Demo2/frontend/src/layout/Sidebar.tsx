@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Drawer,
   List,
@@ -7,6 +9,7 @@ import {
   Box,
   Typography,
   Divider,
+  Avatar,
 } from "@mui/material";
 import {
   Home,
@@ -29,10 +32,36 @@ const navItems = [
 
 const Sidebar = ({ mobileOpen, handleDrawerToggle }: any) => {
   const drawerContent = (
-    <Box>
+    <Box
+      sx={{
+        height: "100%",
+        backgroundColor: "#ffffff",
+      }}
+    >
       {/* Profile Section */}
-      <Box sx={{ p: 2 }}>
-        <Typography variant="h6">Samaresh</Typography>
+      <Box
+        sx={{
+          p: 3,
+          textAlign: "center",
+        }}
+      >
+        <Avatar
+          sx={{
+            width: 70,
+            height: 70,
+            mx: "auto",
+            mb: 1,
+            bgcolor: "#172e44",
+            fontSize: 28,
+          }}
+        >
+          S
+        </Avatar>
+
+        <Typography variant="h6" fontWeight="bold">
+          Samaresh
+        </Typography>
+
         <Typography variant="body2" color="text.secondary">
           Full Stack Developer
         </Typography>
@@ -40,53 +69,85 @@ const Sidebar = ({ mobileOpen, handleDrawerToggle }: any) => {
 
       <Divider />
 
-      <List>
+      {/* Navigation */}
+      <List sx={{ px: 2, mt: 1 }}>
         {navItems.map((item) => (
           <ListItemButton
             key={item.text}
             component={NavLink}
             to={item.path}
+            onClick={handleDrawerToggle}
             sx={{
+              borderRadius: 2,
+              mb: 1,
               "&.active": {
-                backgroundColor: "primary.main",
+                backgroundColor: "#172e44",
                 color: "#fff",
                 "& .MuiListItemIcon-root": {
                   color: "#fff",
                 },
               },
+              "&:hover": {
+                backgroundColor: "#f1f3f5",
+              },
             }}
           >
-            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemIcon sx={{ minWidth: 35 }}>
+              {item.icon}
+            </ListItemIcon>
             <ListItemText primary={item.text} />
           </ListItemButton>
         ))}
       </List>
+
+      {/* Footer */}
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: 20,
+          width: "100%",
+          textAlign: "center",
+        }}
+      >
+        <Typography variant="caption" color="text.secondary">
+          © 2026 Samaresh
+        </Typography>
+      </Box>
     </Box>
   );
 
   return (
     <>
-      {/* Desktop */}
+      {/* Desktop Sidebar */}
       <Drawer
         variant="permanent"
         sx={{
           display: { xs: "none", md: "block" },
           width: drawerWidth,
-          "& .MuiDrawer-paper": { width: drawerWidth },
+          "& .MuiDrawer-paper": {
+            width: drawerWidth,
+            boxSizing: "border-box",
+            borderRight: "1px solid #e0e0e0",
+          },
         }}
         open
       >
         {drawerContent}
       </Drawer>
 
-      {/* Mobile */}
+      {/* Mobile Sidebar */}
       <Drawer
         variant="temporary"
         open={mobileOpen}
         onClose={handleDrawerToggle}
         sx={{
           display: { xs: "block", md: "none" },
-          "& .MuiDrawer-paper": { width: drawerWidth },
+          "& .MuiDrawer-paper": {
+            width: drawerWidth,
+          },
+        }}
+        ModalProps={{
+          keepMounted: true,
         }}
       >
         {drawerContent}
