@@ -4,7 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    "https://redesigned-potato-g9x6r7q66gj29gvr-5173.app.github.dev"
+    # "https://redesigned-potato-g9x6r7q66gj29gvr-5173.app.github.dev",
+    "http://localhost:5173",
 ]
 
 app.add_middleware(
