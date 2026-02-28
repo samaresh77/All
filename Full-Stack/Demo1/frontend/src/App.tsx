@@ -7,12 +7,14 @@ function App() {
   const [message, setMessage] = useState("");
 
   const callNode = async () => {
-    const res = await axios.get("https://redesigned-potato-g9x6r7q66gj29gvr-5000.app.github.dev/hello");
+    // const res = await axios.get("https://redesigned-potato-g9x6r7q66gj29gvr-5000.app.github.dev/hello");
+    const res = await axios.get("http://localhost:5000/hello");
     setMessage(res.data.message);
   };
 
   const callPython = async () => {
-    const res = await axios.get("https://redesigned-potato-g9x6r7q66gj29gvr-8000.app.github.dev/python");
+    // const res = await axios.get("https://redesigned-potato-g9x6r7q66gj29gvr-8000.app.github.dev/python");
+    const res = await axios.get("http://localhost:8000/python");
     setMessage(res.data.message);
   };
   console.log("message", message);
