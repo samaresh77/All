@@ -9,7 +9,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://redesigned-potato-g9x6r7q66gj29gvr-5173.app.github.dev"
+      // "https://redesigned-potato-g9x6r7q66gj29gvr-5173.app.github.dev"
+      "http://localhost:5173",
     ],
     credentials: true,
   })
