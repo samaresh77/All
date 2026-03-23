@@ -15,7 +15,8 @@ import {
   List,
   ListItemButton,
   ListItemText,
-  Switch
+  Switch,
+  Divider
 } from "@mui/material";
 
 import {
@@ -23,80 +24,135 @@ import {
   Menu as MenuIcon
 } from "@mui/icons-material";
 
+import { useNavigate, useLocation } from "react-router-dom";
+
+const navItems = [
+  { label: "Projects", path: "/projects" },
+  { label: "Issues", path: "/issues" },
+  { label: "Reports", path: "/reports" }
+];
 
 export default function Navbar() {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
-  const handleMenuOpen = (e) => setAnchorEl(e.currentTarget);
-  const handleMenuClose = () => setAnchorEl(null);
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    setDrawerOpen(false);
+    setAnchorEl(null);
+  };
+
+  const isActive = (path: string) => pathname === path;
 
   return (
     <>
-      {/* Sticky Navbar */}
+      {/* Navbar */}
       <AppBar
         position="sticky"
-        elevation={1}
+        elevation={0}
         sx={{
-          bgcolor: darkMode ? "#0f172a" : "#ffffff",
-          color: darkMode ? "#ffffff" : "#1f2937"
+          backdropFilter: "blur(10px)",
+          bgcolor: darkMode ? "#0f172a" : "rgba(255,255,255,0.8)",
+          color: darkMode ? "#fff" : "#1f2937",
+          borderBottom: "1px solid rgba(0,0,0,0.05)"
         }}
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          {/* Left: Logo */}
-          <Box display="flex" alignItems="center" gap={1}>
+          
+          {/* 🔹 Logo */}
+          <Box
+            display="flex"
+            alignItems="center"
+            gap={1.2}
+            sx={{ cursor: "pointer" }}
+            onClick={() => handleNavigate("/")}
+          >
             <Box
               sx={{
-                width: 36,
-                height: 36,
-                borderRadius: "8px",
+                width: 38,
+                height: 38,
+                borderRadius: "10px",
                 bgcolor: "#2d9cc4",
                 color: "#fff",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontWeight: 700
+                fontWeight: 700,
+                fontSize: "14px"
               }}
             >
               IF
             </Box>
-            <Typography fontWeight={600}>IssueFlow</Typography>
+            <Typography fontWeight={700}>IssueFlow</Typography>
           </Box>
 
-          {/* Center (desktop only) */}
+          {/* 🔹 Desktop Nav */}
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
               gap: 3
             }}
           >
-            <Typography sx={{ cursor: "pointer" }}>Projects</Typography>
-            <Typography sx={{ cursor: "pointer" }}>Issues</Typography>
-            <Typography sx={{ cursor: "pointer" }}>Reports</Typography>
+            {navItems.map((item) => (
+              <Typography
+                key={item.path}
+                onClick={() => handleNavigate(item.path)}
+                sx={{
+                  cursor: "pointer",
+                  fontWeight: 500,
+                  position: "relative",
+                  color: isActive(item.path)
+                    ? "#2d9cc4"
+                    : darkMode
+                    ? "#cbd5e1"
+                    : "#374151",
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    left: 0,
+                    bottom: -4,
+                    width: isActive(item.path) ? "100%" : "0%",
+                    height: "2px",
+                    bgcolor: "#2d9cc4",
+                    transition: "0.3s"
+                  },
+                  "&:hover::after": {
+                    width: "100%"
+                  }
+                }}
+              >
+                {item.label}
+              </Typography>
+            ))}
           </Box>
 
-          {/* Right */}
+          {/* 🔹 Right Side */}
           <Box display="flex" alignItems="center" gap={1}>
-            {/* Dark mode */}
+            
+            {/* Dark Mode */}
             <Switch
               checked={darkMode}
               onChange={() => setDarkMode(!darkMode)}
             />
 
             {/* Notifications */}
-            <IconButton color="inherit">
+            <IconButton>
               <Badge badgeContent={5} color="error">
                 <Notifications />
               </Badge>
             </IconButton>
 
             {/* Avatar */}
-            <IconButton onClick={handleMenuOpen}>
-              <Avatar sx={{ width: 32, height: 32 }}>S</Avatar>
+            <IconButton onClick={(e) => setAnchorEl(e.currentTarget)}>
+              <Avatar sx={{ width: 34, height: 34 }}>S</Avatar>
             </IconButton>
 
-            {/* Mobile menu */}
+            {/* Mobile Menu */}
             <IconButton
               sx={{ display: { xs: "flex", md: "none" } }}
               onClick={() => setDrawerOpen(true)}
@@ -107,28 +163,61 @@ export default function Navbar() {
         </Toolbar>
       </AppBar>
 
-      {/* Avatar Dropdown */}
+      {/* 🔻 Avatar Menu */}
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
-        onClose={handleMenuClose}
+        onClose={() => setAnchorEl(null)}
+        PaperProps={{
+          sx: {
+            mt: 1,
+            borderRadius: "10px",
+            minWidth: 160
+          }
+        }}
       >
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+        <MenuItem onClick={() => handleNavigate("/profile")}>
+          Profile
+        </MenuItem>
+        <MenuItem onClick={() => handleNavigate("/settings")}>
+          Settings
+        </MenuItem>
+        <Divider />
+        <MenuItem onClick={() => console.log("Logout")}>
+          Logout
+        </MenuItem>
       </Menu>
 
-      {/* Mobile Drawer */}
+      {/* 🔻 Mobile Drawer */}
       <Drawer
         anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
-        <Box sx={{ width: 250 }}>
+        <Box sx={{ width: 260, p: 2 }}>
+          <Typography fontWeight={600} mb={2}>
+            Navigation
+          </Typography>
+
           <List>
-            {["Projects", "Issues", "Reports"].map((text) => (
-              <ListItemButton key={text}>
-                <ListItemText primary={text} />
+            {navItems.map((item) => (
+              <ListItemButton
+                key={item.path}
+                onClick={() => handleNavigate(item.path)}
+                sx={{
+                  borderRadius: "8px",
+                  mb: 1,
+                  bgcolor: isActive(item.path)
+                    ? "rgba(45,156,196,0.1)"
+                    : "transparent"
+                }}
+              >
+                <ListItemText
+                  primary={item.label}
+                  primaryTypographyProps={{
+                    fontWeight: isActive(item.path) ? 600 : 400
+                  }}
+                />
               </ListItemButton>
             ))}
           </List>
