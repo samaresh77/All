@@ -8,7 +8,8 @@ function App() {
 
   const callNode = async () => {
     // const res = await axios.get("https://redesigned-potato-g9x6r7q66gj29gvr-5000.app.github.dev/hello");
-    const res = await axios.get("http://localhost:5000/hello");
+    // const res = await axios.get("http://localhost:5000/hello");
+    const res = await axios.get("http://localhost:5001/hello");
     setMessage(res.data.message);
   };
 
