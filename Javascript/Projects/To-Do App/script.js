@@ -1,24 +1,27 @@
-let input = document.getElementById('todo-input');
-let btn = document.getElementById('add-btn');
-let list = document.getElementById('todo-list');
+const taskInput = document.getElementById("task-input");
+const addBtn = document.getElementById("add-btn");
+const taskList = document.getElementById("task-list");
 
-const addFunction = () => {
-    // console.log(input);
-    // list.innerHTML = `<li>${input.value}</li>`;
+addBtn.addEventListener("click", addTask);
 
-    if (input.value.trim() === "") return; // ignore empty input
+taskInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        addTask();
+    }
+});
 
-    // Create a new list item
-    let p = document.createElement('p');
-    p.innerHTML = `<input type='checkbox'/> ${input.value} <i class="material-icons">delete</i>`;
+function addTask() {
+    const taskText = taskInput.value.trim();
 
-    // Add it to the list
-    list.appendChild(p);
+    if (taskText === "") {
+        return;
+    }
 
-    // Clear input field
-    input.value = "";
+    const li = document.createElement("li");
+    li.textContent = taskText;
 
-    // console.log(input.value);
+    taskList.appendChild(li);
+
+    taskInput.value = "";
+    taskInput.focus();
 }
-
-btn.addEventListener('click', addFunction);
